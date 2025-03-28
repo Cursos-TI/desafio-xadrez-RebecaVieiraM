@@ -2,63 +2,58 @@
 
 // ========================================= 
 // Programa: Desafio de Xadrez - MateCheck
-// Descrição: O programa simula um jogo de Xadrez, onde são exibidas
-// as movimentações de cada peça do tabuleiro.
+// Descrição: Simula a movimentação de peças de xadrez utilizando 
+// loops aninhados e recursão, conforme os requisitos do desafio.
 //
 // Autor: Rebeca Vieira Maia
 // ========================================= 
 
-// Implementação de Movimentação do Bispo
+// Movimentação do Bispo (diagonal superior direita, usando loops aninhados)
 void moverBispo(int passos) {
-    for (int i = 0; i < passos; i++) { // Controla a quantidade de passos
-        for (int j = 0; j < 1; j++) { // Estrutura aninhada
+    for (int i = 0; i < passos; i++) { 
+        for (int j = 0; j < 1; j++) {  
             printf("Cima, Direita\n");
         }
     }
 }
 
-// Implementação de Movimentação da Torre
+// Movimentação da Torre (recursiva)
 void moverTorre(int passos) {
-    if (passos == 0) return;   
-    printf("Direita\n");
-    moverTorre(passos - 1);
+    if (passos == 0) return;   // Condição de parada
+    printf("Direita\n");       // Movimento da torre
+    moverTorre(passos - 1);    // Chamada recursiva para o próximo movimento
 }
 
-// Implementação de Movimentação da Rainha
+// Movimentação da Rainha (recursiva)
 void moverRainha(int passos) {
-    if (passos == 0) return;    
-    printf("Esquerda\n");
-    moverRainha(passos - 1);
+    if (passos == 0) return;    // Condição de parada
+    printf("Esquerda\n");       // Movimento da rainha
+    moverRainha(passos - 1);    // Chamada recursiva para o próximo movimento
 }
 
-// Implementação de Movimentação do Cavalo (L)
+// Movimentação do Cavalo (L, usando variáveis múltiplas e loops aninhados)
 void moverCavalo(int ciclos) {
-    for (int i = 0; i < ciclos; i++) {
-        int movimentos = 0;
-        while (movimentos <= 2) {
-            if (movimentos != 2) {
-                printf("Cima\n");
-                movimentos++;
-                continue; // Pula para a próxima iteração sem executar o código abaixo
+    for (int i = 0; i < ciclos; i++) {  // Repetir o movimento de cavalo conforme o número de ciclos
+        int direcao = 0, deslocamento = 0;  // Variáveis para controlar os movimentos (direção e posição)
+        while (direcao < 2 && deslocamento < 3) {  // Loops para garantir a execução dos 3 movimentos
+            if (deslocamento < 2) {
+                printf("Cima\n");  // Os dois primeiros movimentos são para cima
+                deslocamento++;    // Incrementa o contador de movimentos
+                continue;  // Continua para o próximo ciclo do while sem avançar
             }
-            printf("Direita\n");
-            movimentos++;
-            break; // Termina o loop ao completar o movimento em L
+            printf("Direita\n");  // O terceiro movimento é para a direita
+            direcao++;  // Finaliza a direção após o movimento
+            break;  // Sai do loop while após o movimento em L
         }
     }
 }
 
 int main() {
-
-    // Declaração de variáveis do número de casas que cada peça pode se mover
-    int bispo = 5; 
-    int torre = 5; 
-    int rainha = 8;
-
+    // Definição dos passos de cada peça
+    int bispo = 5, torre = 5, rainha = 8;
     int cavalo = 1; // Variável do número de ciclos que o cavalo irá mover
 
-    // Chamada das funções de movimento das peças
-
+    // Execução dos movimentos
     printf("---Movimentação do Bispo---\n");
     moverBispo(bispo);
 
