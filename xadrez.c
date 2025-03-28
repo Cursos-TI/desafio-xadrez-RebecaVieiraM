@@ -10,9 +10,9 @@
 
 // Movimentação do Bispo (diagonal superior direita, usando loops aninhados)
 void moverBispo(int passos) {
-    for (int i = 0; i < passos; i++) { 
-        for (int j = 0; j < 1; j++) {  
-            printf("Cima, Direita\n");
+    for (int i = 0; i < passos; i++) {  // Repete o movimento para o número de passos
+        for (int j = 0; j < 1; j++) {  // Loop aninhado
+            printf("Cima, Direita\n");  // Imprime o movimento do bispo
         }
     }
 }
